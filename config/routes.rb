@@ -3,7 +3,25 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'start_session#index'
+  
+  get '/signin' => 'start_session#signin'
+  get '/signup' => 'start_session#signup'
+  post '/do_signup' => 'start_session#do_signup'
+  post '/do_signin' => 'start_session#do_signin'
+  get '/logout' => 'session#logout'
+
+  get '/profile' => 'session#profile'
+  get '/settings' => 'session#settings'
+
+  namespace :admin do
+    resources :user
+    resources :grocery_list
+    resources :store_product
+    resources :product
+    resources :store
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

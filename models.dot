@@ -1,0 +1,13 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"GroceryList" [shape=Mrecord, label="{GroceryList|id :integer\lbody :text\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Product" [shape=Mrecord, label="{Product|id :integer\lname :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Store" [shape=Mrecord, label="{Store|id :integer\lname :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"StoreProduct" [shape=Mrecord, label="{StoreProduct|id :integer\lstore_id :integer\lproduct_id :integer\lgrocery_list_id :integer\lcost :decimal\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lemail :string\lpassword_digest :string\lfax_number :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"GroceryList" -> "StoreProduct" [arrowtail=odot, arrowhead=crow, dir=both color="#D1D6EC"]
+	"Product" -> "Store" [arrowtail=crow, arrowhead=crow, dir=both color="#5C4A0F"]
+	"Product" -> "StoreProduct" [arrowtail=odot, arrowhead=crow, dir=both color="#C88C08"]
+	"Store" -> "StoreProduct" [arrowtail=odot, arrowhead=crow, dir=both color="#FC5890"]
+	"User" -> "GroceryList" [arrowtail=odot, arrowhead=crow, dir=both color="#20B91B"]
+}

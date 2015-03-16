@@ -1,0 +1,24 @@
+<h1>Users</h1>
+<h3>+ Add new</h3>
+<table class="table table-striped">
+	<tr>
+		<th>Id</th>
+		<th>Email</th>
+		<th>Password</th>
+		<th>User is Admin</th>
+		<th>History</th> <!-- create a route somehow -->
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	<% @users.each do |user| %>
+	  <tr>
+	  	<td><%= user.id %></td>
+	    <td><%= user.email %></td>
+	    <td><%= user.password %></td>
+	    <td><%= user.is_admin %></td>
+	    <td>History</td>
+	    <td><%= link_to "Edit", edit_admin_user_path(:id => user.id) %></td>
+	    <td><%= link_to "Delete", admin_user_path(:id => user.id), data: { :confirm => "Are you sure?" }, method: :delete %></td>
+	  </tr>
+	<% end %>
+</table>

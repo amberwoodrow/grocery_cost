@@ -1,14 +1,52 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>GroceryCost</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+<html lang="en">
+	<head>
+	  <title>GroceryCost</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="container-fluid">
+		    <div class="navbar-header">
+		    	<% if session[:user_id] == nil %>
+		        <%= link_to "HOME!!!", root_path, :class => "navbar-brand" %>
+		      <% else %>
+		        <%= link_to "HOME!!!", profile_path, :class => "navbar-brand" %>
+		      <% end %>
+		    </div>
+		    <div class="nav navbar-nav navbar-right">
+			    <ul class="nav navbar-nav">
+			    	<% if session[:user_id] == nil %>
+			    		<li><%= link_to "Sign up", signup_path %></li>
+			     	  <li><%= link_to "Sign in", signin_path %></li>
+			    	<% else %>
+			    	  <li>Welcome, <%= current_user.email %>!</li>
+			    	  <li><%= link_to " • ", settings_path %></li>
+				    	<li><%= link_to "Log out", logout_path %></li>
+		     	  <% end %>
+	  	  	</ul>
+	  		</div>
+	  	</div>
+		</nav>
+		<% if current_user && current_user.is_admin %>
+		  <nav class="navbar">
+			  <div class="container-fluid">
+			  	<ul class="nav navbar-nav">
+				  	<li><%= link_to "Users", admin_user_index_path %></li>
+				  	<li><%= link_to "Grocery Lists", admin_grocery_list_index_path %></li>
+				  	<li><%= link_to "Store Products", admin_store_product_index_path %></li>
+				  	<li><%= link_to "Products", admin_product_index_path %></li>
+				  	<li><%= link_to "Stores", admin_store_index_path %></li>
+				  	<li>+</li>				  	
+				  </ul>
+			  </div>
+		  </nav>
+		<% end %>
+	  <div class="container-fluid">
+			<%= yield %>
+	  </div>
+	</body>
 </html>
