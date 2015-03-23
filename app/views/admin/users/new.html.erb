@@ -1,0 +1,21 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h2>New User</h2>
+				<%= form_for @users, url: new_admin_user_path do |f| %>
+				  <%= render "shared/validation_messages", :target => @users %>
+				<div class="form-group">
+					<%= f.label :email, class: "control-label" %>
+					<%= f.text_field :email, :placeholder => "Enter new user name", class: "form-control" %>
+					<%= f.label :password, class: "control-label" %>
+					<%= f.password_field :password, :placeholder => "Enter new user password", class: "form-control" %>
+				</div>
+				<div class="form-group">
+				  <%= f.submit "Create", class: "btn btn-primary" %>
+				</div>
+				<% end %>
+			</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>

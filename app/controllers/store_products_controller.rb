@@ -1,4 +1,4 @@
-class StoreProductController < AuthenticatedController
+class StoreProductsController < AuthenticatedController
 	def grocery_list
 		# @grocery_list = GroceryList.new
 	end

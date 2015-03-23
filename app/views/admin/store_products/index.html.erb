@@ -1,0 +1,18 @@
+<h1>Store Products</h1>
+<h3><%= link_to "+ Add new", new_admin_store_product_path %></h3>
+<table class="table table-striped">
+	<tr>
+		<th>Store Product Id</th>
+		<th>Store Product Name</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	<% @store_products.each do |store_product| %>
+	  <tr>
+	    <td><%= store_product.id %></td>
+	    <td><%= store_product.name %></td>
+	    <td><%= link_to "Edit", edit_admin_store_product_path(:id => store_product.id) %></td>
+	    <td><%= link_to "Delete", admin_store_product_path(:id => store_product.id), data: { :confirm => "Are you sure?" }, method: :delete %></td>
+	  </tr>
+	<% end %>
+</table>

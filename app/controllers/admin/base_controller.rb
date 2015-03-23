@@ -7,4 +7,20 @@ class Admin::BaseController < AuthenticatedController
     	redirect_to profile_path
     end
 	end
+
+	def store_params
+		params.require(:store).permit(:id, :name) #, :address)
+	end
+
+	def product_params
+		params.require(:product).permit(:id, :name)
+	end
+
+	def grocery_list_params
+		params.require(:store).permit(:id, :body) #, :date
+	end
+
+	def store_product_params
+		params.require(:store).permit(:id, :name) #, :cost)
+	end
 end

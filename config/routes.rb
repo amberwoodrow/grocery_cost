@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   get '/settings' => 'session#settings'
 
   namespace :admin do
-    resources :user
-    resources :grocery_list
-    resources :store_product
-    resources :product
-    resources :store
+    resources :users
+    resources :grocery_lists
+    resources :store_products
+    resources :products
+    resources :stores
   end
 
 

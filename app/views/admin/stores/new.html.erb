@@ -1,0 +1,20 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h2>New Store</h2>
+				<%= form_for [:admin, @store] do |f| %>
+				  <%= render "shared/validation_messages", :target => @store %>
+				<div class="form-group">
+					<%= f.label :store_name, class: "control-label" %>
+					<%= f.text_field :name, :placeholder => "Enter a store name", class: "form-control" %>
+				  <!-- store address -->
+				</div>
+				<div class="form-group">
+				  <%= f.submit "Create", class: "btn btn-primary" %>
+				</div>
+				<% end %>
+			</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>

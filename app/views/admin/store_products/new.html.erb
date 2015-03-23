@@ -1,0 +1,24 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h2>New Store Product</h2>
+				<%= form_for @store_product, url: new_admin_store_product_path do |f| %>
+				  <%= render "shared/validation_messages", :target => @store_product %>
+				<div class="form-group">
+					<%= f.label :store_name, class: "control-label" %>
+					<%= f.text_field :name, :placeholder => "Enter a store name", class: "form-control" %>
+				  <!-- store address -->
+				  <%= f.label :product_name, class: "control-label" %>
+					<%= f.text_field :name, :placeholder => "Enter a product name", class: "form-control" %>
+					<!-- optional brand -->
+					<!-- cost -->
+				</div>
+				<div class="form-group">
+				  <%= f.submit "Create", class: "btn btn-primary" %>
+				</div>
+				<% end %>
+			</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
